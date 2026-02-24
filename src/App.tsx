@@ -10,11 +10,83 @@ interface ProjectBlockProps {
   delay: number;
   target?: string;
   rel?: string;
-  isHighlighted?: boolean;
   icon: React.ElementType;
+  colorTheme: 'blue' | 'indigo' | 'violet' | 'emerald' | 'red' | 'amber';
 }
 
-const ProjectBlock = ({ number, title, description, href, delay, target, rel, isHighlighted, icon: Icon }: ProjectBlockProps) => {
+const ProjectBlock = ({ number, title, description, href, delay, target, rel, icon: Icon, colorTheme }: ProjectBlockProps) => {
+  const themeStyles = {
+    blue: {
+      border: 'hover:border-blue-200',
+      bgHover: 'hover:bg-blue-50/50',
+      shadowHover: 'hover:shadow-blue-100/50',
+      number: 'group-hover:text-blue-300',
+      iconBg: 'bg-blue-50 text-blue-500 group-hover:bg-blue-100 group-hover:text-blue-600',
+      arrow: 'group-hover:text-blue-600',
+      line: 'bg-slate-100 group-hover:bg-blue-500',
+      title: 'group-hover:text-blue-900',
+      blob: 'bg-blue-100/50'
+    },
+    red: {
+      border: 'hover:border-red-200',
+      bgHover: 'hover:bg-red-50/50',
+      shadowHover: 'hover:shadow-red-100/50',
+      number: 'group-hover:text-red-300',
+      iconBg: 'bg-red-50 text-red-500 group-hover:bg-red-100 group-hover:text-red-600',
+      arrow: 'group-hover:text-red-600',
+      line: 'bg-slate-100 group-hover:bg-red-500',
+      title: 'group-hover:text-red-900',
+      blob: 'bg-red-100/50'
+    },
+    amber: {
+      border: 'hover:border-amber-200',
+      bgHover: 'hover:bg-amber-50/50',
+      shadowHover: 'hover:shadow-amber-100/50',
+      number: 'group-hover:text-amber-300',
+      iconBg: 'bg-amber-50 text-amber-500 group-hover:bg-amber-100 group-hover:text-amber-600',
+      arrow: 'group-hover:text-amber-600',
+      line: 'bg-slate-100 group-hover:bg-amber-500',
+      title: 'group-hover:text-amber-900',
+      blob: 'bg-amber-100/50'
+    },
+    emerald: {
+      border: 'hover:border-emerald-200',
+      bgHover: 'hover:bg-emerald-50/50',
+      shadowHover: 'hover:shadow-emerald-100/50',
+      number: 'group-hover:text-emerald-300',
+      iconBg: 'bg-emerald-50 text-emerald-500 group-hover:bg-emerald-100 group-hover:text-emerald-600',
+      arrow: 'group-hover:text-emerald-600',
+      line: 'bg-slate-100 group-hover:bg-emerald-500',
+      title: 'group-hover:text-emerald-900',
+      blob: 'bg-emerald-100/50'
+    },
+    // Fallback for unused themes to prevent errors if referenced
+    indigo: {
+        border: 'hover:border-indigo-200',
+        bgHover: 'hover:bg-indigo-50/50',
+        shadowHover: 'hover:shadow-indigo-100/50',
+        number: 'group-hover:text-indigo-300',
+        iconBg: 'bg-indigo-50 text-indigo-500 group-hover:bg-indigo-100 group-hover:text-indigo-600',
+        arrow: 'group-hover:text-indigo-600',
+        line: 'bg-slate-100 group-hover:bg-indigo-500',
+        title: 'group-hover:text-indigo-900',
+        blob: 'bg-indigo-100/50'
+    },
+    violet: {
+        border: 'hover:border-violet-200',
+        bgHover: 'hover:bg-violet-50/50',
+        shadowHover: 'hover:shadow-violet-100/50',
+        number: 'group-hover:text-violet-300',
+        iconBg: 'bg-violet-50 text-violet-500 group-hover:bg-violet-100 group-hover:text-violet-600',
+        arrow: 'group-hover:text-violet-600',
+        line: 'bg-slate-100 group-hover:bg-violet-500',
+        title: 'group-hover:text-violet-900',
+        blob: 'bg-violet-100/50'
+    }
+  };
+
+  const styles = themeStyles[colorTheme];
+
   return (
     <motion.a
       href={href}
@@ -26,68 +98,48 @@ const ProjectBlock = ({ number, title, description, href, delay, target, rel, is
       transition={{ duration: 0.6, delay }}
       className={`group relative flex flex-col justify-between p-8 h-[420px] border rounded-[2rem] 
                  transition-all duration-300 ease-out cursor-pointer overflow-hidden
+                 bg-white border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)]
                  hover:-translate-y-2 hover:shadow-2xl
-                 ${isHighlighted 
-                   ? 'bg-sky-50 border-sky-200 hover:bg-sky-100 hover:shadow-sky-200/50' 
-                   : 'bg-white border-slate-100 hover:border-sky-200 hover:bg-sky-50/50 hover:shadow-sky-100/50'
-                 }`}
+                 ${styles.border} ${styles.bgHover} ${styles.shadowHover}`}
     >
       <div className="flex justify-between items-start">
-        <span className={`text-4xl font-display font-light transition-colors duration-300
-          ${isHighlighted 
-            ? 'text-sky-400 group-hover:text-sky-500' 
-            : 'text-slate-200 group-hover:text-sky-300'
-          }`}>
+        <span className={`text-4xl font-display font-light transition-colors duration-300 text-slate-100/50 group-hover:opacity-100 ${styles.number}`}>
           {number}
         </span>
-        <div className={`p-3 rounded-full transition-colors duration-300
-          ${isHighlighted
-            ? 'bg-white text-sky-600 group-hover:bg-sky-200 group-hover:text-sky-700'
-            : 'bg-slate-50 group-hover:bg-white group-hover:text-sky-600'
-          }`}>
-          <ArrowUpRight className={`w-5 h-5 transition-colors
-            ${isHighlighted ? 'text-sky-600' : 'text-slate-400 group-hover:text-sky-600'}`} 
-          />
+        <div className="p-3 rounded-full bg-slate-50 group-hover:bg-white transition-colors duration-300">
+          <ArrowUpRight className={`w-5 h-5 text-slate-400 transition-colors ${styles.arrow}`} />
         </div>
       </div>
 
       <div className="flex-1 flex items-center justify-center py-4">
-        <div className={`p-6 rounded-full transition-all duration-300 group-hover:scale-105
-          ${isHighlighted 
-            ? 'bg-sky-100 text-sky-600 group-hover:bg-sky-200 group-hover:text-sky-700' 
-            : 'bg-slate-50 text-slate-400 group-hover:bg-sky-50 group-hover:text-sky-500'
-          }`}>
+        <div className={`p-6 rounded-full transition-all duration-300 group-hover:scale-105 ${styles.iconBg}`}>
           <Icon className="w-12 h-12 stroke-[1.5]" />
         </div>
       </div>
 
       <div className="space-y-4 relative z-10">
-        <div className={`w-12 h-1 transition-colors duration-300
-          ${isHighlighted ? 'bg-sky-400 group-hover:bg-sky-500' : 'bg-slate-100 group-hover:bg-sky-400'}`} 
-        />
+        <div className={`w-12 h-1 transition-colors duration-300 ${styles.line}`} />
         <div>
-          <h3 className={`text-2xl font-bold mb-2 transition-colors
-            ${isHighlighted ? 'text-sky-900' : 'text-slate-900 group-hover:text-sky-900'}`}>
+          <h3 className={`text-2xl font-extrabold mb-2 transition-colors text-slate-900 ${styles.title}`}>
             {title}
           </h3>
-          <p className={`font-medium leading-relaxed transition-colors
-            ${isHighlighted ? 'text-sky-700/80' : 'text-slate-500 group-hover:text-slate-600'}`}>
+          <p className="font-medium leading-relaxed transition-colors text-slate-400 group-hover:text-slate-600">
             {description}
           </p>
         </div>
       </div>
 
       {/* Decorative gradient blob on hover */}
-      <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-sky-100/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className={`absolute -bottom-20 -right-20 w-64 h-64 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${styles.blob}`} />
     </motion.a>
   );
 };
 
 const teamMembers = [
-  { role: '팀장', name: '권주호', initial: 'K', color: 'bg-sky-500' },
-  { role: '팀원', name: '전영준', initial: 'J', color: 'bg-indigo-500' },
-  { role: '팀원', name: '유대건', initial: 'Y', color: 'bg-violet-500' },
-  { role: '팀원', name: '윤지원', initial: 'Y', color: 'bg-emerald-500' },
+  { role: '팀장', name: '권주호', initial: 'K', color: 'bg-red-600', project: 'B Project' },
+  { role: '팀원', name: '전영준', initial: 'J', color: 'bg-blue-600', project: 'A Project' },
+  { role: '팀원', name: '유대건', initial: 'Y', color: 'bg-emerald-500', project: 'C Project 2' },
+  { role: '팀원', name: '윤지원', initial: 'Y', color: 'bg-amber-500', project: 'C Project 1' },
 ];
 
 export default function App() {
@@ -218,7 +270,7 @@ export default function App() {
                     <div className="h-1 w-20 bg-sky-500 rounded-full" />
                   </motion.div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                     <ProjectBlock 
                       number="01"
                       title="A 프로젝트"
@@ -226,6 +278,7 @@ export default function App() {
                       href="#"
                       delay={0.1}
                       icon={Lightbulb}
+                      colorTheme="blue"
                     />
                     <ProjectBlock 
                       number="02"
@@ -234,6 +287,7 @@ export default function App() {
                       href="#"
                       delay={0.2}
                       icon={BarChart3}
+                      colorTheme="red"
                     />
                     <ProjectBlock 
                       number="03"
@@ -244,6 +298,7 @@ export default function App() {
                       rel="noopener noreferrer"
                       delay={0.3}
                       icon={Monitor}
+                      colorTheme="amber"
                     />
                     <ProjectBlock 
                       number="04"
@@ -252,6 +307,7 @@ export default function App() {
                       href="#"
                       delay={0.4}
                       icon={Server}
+                      colorTheme="emerald"
                     />
                   </div>
                 </div>
@@ -308,7 +364,7 @@ export default function App() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 + 0.3 }}
                       className="bg-white p-8 rounded-[2rem] border border-slate-100 shadow-lg shadow-slate-100/50 
-                                 hover:shadow-xl hover:shadow-sky-100/50 hover:-translate-y-2 transition-all duration-300
+                                 hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-2 transition-all duration-300
                                  flex flex-col items-center text-center group"
                     >
                       <div className={`w-24 h-24 rounded-full ${member.color} mb-6 flex items-center justify-center text-white text-3xl font-bold shadow-lg group-hover:scale-110 transition-transform duration-300`}>
@@ -317,8 +373,9 @@ export default function App() {
                       <span className="inline-block px-3 py-1 bg-slate-50 text-slate-500 text-xs font-bold rounded-full mb-3 uppercase tracking-wider">
                         {member.role}
                       </span>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-1">{member.name}</h3>
-                      <p className="text-slate-400 text-sm">Team Project 2026</p>
+                      <h3 className="text-2xl font-bold text-slate-900 mb-2">{member.name}</h3>
+                      <div className={`w-8 h-1 rounded-full ${member.color} mb-2 opacity-50`} />
+                      <p className="text-slate-400 text-sm">{member.project}</p>
                     </motion.div>
                   ))}
                 </div>
