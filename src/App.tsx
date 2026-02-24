@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, ArrowUpRight, ArrowLeft, User } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ArrowLeft, User, Lightbulb, BarChart3, Monitor, Server } from 'lucide-react';
 import { useState } from 'react';
 
 interface ProjectBlockProps {
@@ -8,36 +8,70 @@ interface ProjectBlockProps {
   description: string;
   href: string;
   delay: number;
+  target?: string;
+  rel?: string;
+  isHighlighted?: boolean;
+  icon: React.ElementType;
 }
 
-const ProjectBlock = ({ number, title, description, href, delay }: ProjectBlockProps) => {
+const ProjectBlock = ({ number, title, description, href, delay, target, rel, isHighlighted, icon: Icon }: ProjectBlockProps) => {
   return (
     <motion.a
       href={href}
+      target={target}
+      rel={rel}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="group relative flex flex-col justify-between p-8 h-[420px] bg-white border border-slate-100 rounded-[2rem] 
-                 hover:border-sky-200 hover:bg-sky-50/50 transition-all duration-300 ease-out
-                 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-100/50 cursor-pointer overflow-hidden"
+      className={`group relative flex flex-col justify-between p-8 h-[420px] border rounded-[2rem] 
+                 transition-all duration-300 ease-out cursor-pointer overflow-hidden
+                 hover:-translate-y-2 hover:shadow-2xl
+                 ${isHighlighted 
+                   ? 'bg-sky-50 border-sky-200 hover:bg-sky-100 hover:shadow-sky-200/50' 
+                   : 'bg-white border-slate-100 hover:border-sky-200 hover:bg-sky-50/50 hover:shadow-sky-100/50'
+                 }`}
     >
       <div className="flex justify-between items-start">
-        <span className="text-4xl font-display font-light text-slate-200 group-hover:text-sky-300 transition-colors duration-300">
+        <span className={`text-4xl font-display font-light transition-colors duration-300
+          ${isHighlighted 
+            ? 'text-sky-400 group-hover:text-sky-500' 
+            : 'text-slate-200 group-hover:text-sky-300'
+          }`}>
           {number}
         </span>
-        <div className="p-3 rounded-full bg-slate-50 group-hover:bg-white group-hover:text-sky-600 transition-colors duration-300">
-          <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-sky-600 transition-colors" />
+        <div className={`p-3 rounded-full transition-colors duration-300
+          ${isHighlighted
+            ? 'bg-white text-sky-600 group-hover:bg-sky-200 group-hover:text-sky-700'
+            : 'bg-slate-50 group-hover:bg-white group-hover:text-sky-600'
+          }`}>
+          <ArrowUpRight className={`w-5 h-5 transition-colors
+            ${isHighlighted ? 'text-sky-600' : 'text-slate-400 group-hover:text-sky-600'}`} 
+          />
+        </div>
+      </div>
+
+      <div className="flex-1 flex items-center justify-center py-4">
+        <div className={`p-6 rounded-full transition-all duration-300 group-hover:scale-105
+          ${isHighlighted 
+            ? 'bg-sky-100 text-sky-600 group-hover:bg-sky-200 group-hover:text-sky-700' 
+            : 'bg-slate-50 text-slate-400 group-hover:bg-sky-50 group-hover:text-sky-500'
+          }`}>
+          <Icon className="w-12 h-12 stroke-[1.5]" />
         </div>
       </div>
 
       <div className="space-y-4 relative z-10">
-        <div className="w-12 h-1 bg-slate-100 group-hover:bg-sky-400 transition-colors duration-300" />
+        <div className={`w-12 h-1 transition-colors duration-300
+          ${isHighlighted ? 'bg-sky-400 group-hover:bg-sky-500' : 'bg-slate-100 group-hover:bg-sky-400'}`} 
+        />
         <div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-sky-900 transition-colors">
+          <h3 className={`text-2xl font-bold mb-2 transition-colors
+            ${isHighlighted ? 'text-sky-900' : 'text-slate-900 group-hover:text-sky-900'}`}>
             {title}
           </h3>
-          <p className="text-slate-500 font-medium leading-relaxed group-hover:text-slate-600 transition-colors">
+          <p className={`font-medium leading-relaxed transition-colors
+            ${isHighlighted ? 'text-sky-700/80' : 'text-slate-500 group-hover:text-slate-600'}`}>
             {description}
           </p>
         </div>
@@ -191,6 +225,7 @@ export default function App() {
                       description="사용자 경험을 혁신하는 차세대 웹 플랫폼 기획 및 디자인"
                       href="#"
                       delay={0.1}
+                      icon={Lightbulb}
                     />
                     <ProjectBlock 
                       number="02"
@@ -198,13 +233,17 @@ export default function App() {
                       description="빅데이터 기반의 실시간 분석 및 시각화 대시보드"
                       href="#"
                       delay={0.2}
+                      icon={BarChart3}
                     />
                     <ProjectBlock 
                       number="03"
                       title="C 프로젝트 1"
                       description="직관적인 인터페이스와 마이크로 인터랙션 구현"
-                      href="#"
+                      href="https://legend-sooty.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       delay={0.3}
+                      icon={Monitor}
                     />
                     <ProjectBlock 
                       number="04"
@@ -212,6 +251,7 @@ export default function App() {
                       description="안정적인 서버 아키텍처 및 고성능 네트워크 시스템"
                       href="#"
                       delay={0.4}
+                      icon={Server}
                     />
                   </div>
                 </div>
