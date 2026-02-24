@@ -50,10 +50,10 @@ const ProjectBlock = ({ number, title, description, href, delay }: ProjectBlockP
 };
 
 const teamMembers = [
-  { role: '팀장', name: '홍길동', initial: 'H', color: 'bg-sky-500' },
-  { role: '팀원', name: '김민수', initial: 'K', color: 'bg-indigo-500' },
-  { role: '팀원', name: '이서연', initial: 'L', color: 'bg-violet-500' },
-  { role: '팀원', name: '박준호', initial: 'P', color: 'bg-emerald-500' },
+  { role: '팀장', name: '권주호', initial: 'K', color: 'bg-sky-500' },
+  { role: '팀원', name: '전영준', initial: 'J', color: 'bg-indigo-500' },
+  { role: '팀원', name: '유대건', initial: 'Y', color: 'bg-violet-500' },
+  { role: '팀원', name: '윤지원', initial: 'Y', color: 'bg-emerald-500' },
 ];
 
 export default function App() {
