@@ -200,7 +200,7 @@ export default function App() {
                     </div>
                     
                     <h1 className="text-6xl md:text-7xl font-bold text-slate-900 leading-[1.1] tracking-tight">
-                      2026 팀 프로젝트<br />
+                      <span className="text-[#0D9488] font-extrabold">울림조</span> 팀 프로젝트<br />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600">
                         통합 플랫폼
                       </span>
@@ -304,7 +304,9 @@ export default function App() {
                       number="04"
                       title="C 프로젝트 2"
                       description="안정적인 서버 아키텍처 및 고성능 네트워크 시스템"
-                      href="#"
+                      href="https://donga-project-c.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       delay={0.4}
                       icon={Server}
                       colorTheme="emerald"
