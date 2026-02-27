@@ -275,7 +275,9 @@ export default function App() {
                       number="01"
                       title="A 프로젝트"
                       description="사용자 경험을 혁신하는 차세대 웹 플랫폼 기획 및 디자인"
-                      href="#"
+                      href="https://ai-news-room.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       delay={0.1}
                       icon={Lightbulb}
                       colorTheme="blue"
