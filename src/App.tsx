@@ -200,7 +200,7 @@ export default function App() {
                     </div>
                     
                     <h1 className="text-6xl md:text-7xl font-bold text-slate-900 leading-[1.1] tracking-tight">
-                      <span className="text-[#0D9488] font-extrabold">울림조</span> 팀 프로젝트<br />
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-emerald-400 font-extrabold">울림조</span> 팀 프로젝트<br />
                       <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600">
                         통합 플랫폼
                       </span>
