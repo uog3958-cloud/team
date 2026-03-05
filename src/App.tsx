@@ -274,7 +274,7 @@ export default function App() {
                     <ProjectBlock 
                       number="01"
                       title="A 프로젝트"
-                      description="사용자 경험을 혁신하는 차세대 웹 플랫폼 기획 및 디자인"
+                      description="AI 기반의 실시간 뉴스 리서치 자동 생성 플랫폼"
                       href="https://ai-news-room.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -285,8 +285,10 @@ export default function App() {
                     <ProjectBlock 
                       number="02"
                       title="B 프로젝트"
-                      description="빅데이터 기반의 실시간 분석 및 시각화 대시보드"
-                      href="#"
+                      description="생성형 AI 기반 맞춤형 트렌드 분석 및 시각화 솔루션"
+                      href="https://mbc-qpjk.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       delay={0.2}
                       icon={BarChart3}
                       colorTheme="red"
@@ -305,7 +307,7 @@ export default function App() {
                     <ProjectBlock 
                       number="04"
                       title="C 프로젝트 2"
-                      description="안정적인 서버 아키텍처 및 고성능 네트워크 시스템"
+                      description="기자실·시청자 이중 구조 뉴스룸과 Gemini API 기반 팩트체크 자동화 시스템"
                       href="https://donga-project-c.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
