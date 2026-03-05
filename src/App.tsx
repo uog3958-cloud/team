@@ -294,7 +294,7 @@ export default function App() {
                     <ProjectBlock 
                       number="03"
                       title="C 프로젝트 1"
-                      description="직관적인 인터페이스와 마이크로 인터랙션 구현"
+                      description="독자가 체험하며 읽는 인터랙티브 스토리텔링 중심 뉴스 플랫폼"
                       href="https://legend-sooty.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
