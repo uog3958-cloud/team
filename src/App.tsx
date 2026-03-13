@@ -286,7 +286,7 @@ export default function App() {
                       number="02"
                       title="B 프로젝트"
                       description="생성형 AI 기반 맞춤형 트렌드 분석 및 시각화 솔루션"
-                      href="https://mbc-qpjk.vercel.app/"
+                      href="https://mbc-axbf.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
                       delay={0.2}
