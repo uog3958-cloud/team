@@ -308,7 +308,7 @@ export default function App() {
                       number="04"
                       title="C 프로젝트 2"
                       description="기자실·시청자 이중 구조 뉴스룸과 Gemini API 기반 팩트체크 자동화 시스템"
-                      href="https://donga-project-c.vercel.app/"
+                      href="https://daegeonyu45-sketch-dong-a-1bo-183b-aic6k0gti.vercel.app/"
                       target="_blank"
                       rel="noopener noreferrer"
                       delay={0.4}
